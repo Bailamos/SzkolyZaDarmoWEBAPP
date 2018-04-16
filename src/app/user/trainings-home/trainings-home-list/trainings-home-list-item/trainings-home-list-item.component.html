@@ -1,0 +1,23 @@
+<a
+  (click)="onTrainingClicked()"
+  class="list-group-item clearfix">
+
+  <div class="pull-left">
+    <h4 class="list-group-item-heading"> {{training.title}} </h4>
+    <p class="list-group-item-text">
+      Kategoria: {{training.category.name}}
+    </p>
+    <p class="list-group-item-text">
+      Lokalizacja: {{training.voivodeship.voivodeshipName}}
+    </p>
+    <p class="list-group-item-text">
+      Termin realizacji: od {{training.registerSince | date:'yyyy-MM-dd'}} do {{training.registerTo | date:'yyyy-MM-dd'}}
+    </p>
+    <p class="list-group-item-text">
+      Data dodania: {{training.insertDate | date:'yyyy-MM-dd'}}
+    </p>
+    <p class="list-group-item-text">
+      Dla osob o statusie zawodowym: {{training.marketStatus.status}}
+    </p>
+  </div>
+</a>

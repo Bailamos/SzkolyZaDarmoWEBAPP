@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-3">
+  <div class="form-group" style="text-align: center">
+    <h4>Sortowanie:</h4>
+    <mat-form-field>
+      <mat-select
+        [(ngModel)]="sortingOptions"
+        placeholder="kryteria sortowania"
+        (selectionChange)="onSortingChange()">
+        <mat-option *ngFor="let criteria of sortingCriteria" [value]="criteria.value">{{criteria.label}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+</div>

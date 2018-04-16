@@ -1,0 +1,47 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a [routerLink]="['']" class="navbar-brand">Szkolimy za darmo</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a style="cursor: pointer;"
+             data-toggle="dropdown"
+             class="dropdown-toggle"
+             role="button"
+             [routerLink]="['auth']">Zaloguj
+            <span class="caret"></span>
+          </a>
+        </li>
+      </ul>
+      <div *ngIf="instructor">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <button class="btn btn-danger" (click)="logout()">wyloguj</button>
+          </li>
+          <li class="dropdown">
+            <a style="cursor: pointer;"
+               data-toggle="dropdown"
+               class="dropdown-toggle"
+               role="button">Moje konto
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a
+                style="cursor: pointer;"
+                [routerLink]="['panel', getInstructorId()]">Szkolenia</a></li>
+              <hr style="margin: 0">
+              <!--<li><a-->
+                <!--*ngIf="instructor.isAdmin"-->
+                <!--style="cursor: pointer;"-->
+                <!--[routerLink]="['admin', getInstructorId()]">Panel admina</a></li>-->
+            <!--</ul>-->
+          <!--</li>-->
+        <!--</ul>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</nav>-->
+
+

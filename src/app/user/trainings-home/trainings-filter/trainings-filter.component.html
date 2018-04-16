@@ -1,0 +1,26 @@
+<div class="form-group">
+  <h4>Filtry:</h4>
+  <mat-form-field>
+    <mat-select
+      panelClass="test"
+      [(ngModel)]="filterOptions.selectedCategories"
+      placeholder="Kategorie"
+      multiple
+      (selectionChange)="onFilterChange()">
+      <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <hr>
+
+  <mat-form-field>
+    <mat-select
+      [(ngModel)]="filterOptions.selectedLocalizations"
+      placeholder="Województwa"
+      multiple
+      (selectionChange)="onFilterChange()">
+      <mat-option *ngFor="let voivodeship of voivodeships" [value]="voivodeship.id">{{voivodeship.voivodeshipName}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>

@@ -19,6 +19,8 @@ export class Training {
     public marketStatus: MarketStatus,
     public instructor: Instructor,
     public counties: {id: number, countyName: string}[],
-    public marketStatuses: MarketStatus[]
+    public marketStatuses: MarketStatus[],
+
   ){}
+
 }

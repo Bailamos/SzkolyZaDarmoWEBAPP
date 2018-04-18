@@ -5,6 +5,7 @@ import {TrainingsService} from '../shared/services/trainings.service';
 import { HeaderComponent } from './header/header.component';
 import {SharedModule} from '../shared/shared.module';
 import {ResourcesService} from "../shared/services/resources.service";
+import {UsersService} from "../shared/services/users.service";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import {ResourcesService} from "../shared/services/resources.service";
   ],
   providers: [
     TrainingsService,
+    UsersService,
     ResourcesService
   ]
 })

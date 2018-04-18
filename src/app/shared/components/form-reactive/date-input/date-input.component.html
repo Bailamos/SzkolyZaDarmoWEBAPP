@@ -1,0 +1,9 @@
+<div class="form-group" [formGroup]="group">
+  <label for="{{name}}">{{label}}</label>
+  <my-date-picker
+    id="{{name}}"
+    locale="pl"
+    [options]="this.pickerOptions"
+    formControlName="{{name}}"
+    name="mydate"></my-date-picker>
+</div>

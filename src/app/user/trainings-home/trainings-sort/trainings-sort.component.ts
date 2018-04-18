@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {SortCriteria} from "../../../shared/criterias/sort-criteria";
+import {SelectItem} from "../../../shared/models/select-item.model";
 
 @Component({
   selector: 'app-trainings-sort',
@@ -10,16 +11,18 @@ export class TrainingsSortComponent implements OnInit {
   @Input() sortingCriteria: SortCriteria[];
   @Output() onSortingChanged = new EventEmitter<any>();
 
-  public sortingOptions;
-
   constructor() { }
 
   ngOnInit() {
-    this.sortingOptions = this.sortingCriteria[0].value;
+
   }
 
-  onSortingChange() {
-    this.onSortingChanged.next(this.sortingOptions);
+  onSelectionChange(sortingCriteriaSelected) {
+    this.onSortingChanged.next(sortingCriteriaSelected[0]);
+  }
+
+  public mapSortingCriteriaToSelectItem() {
+    return this.sortingCriteria.map(c => new SelectItem(c.value, c.label));
   }
 
 }

@@ -1,0 +1,25 @@
+<div class="container">
+  <div *ngIf="training">
+    <div class="row">
+      <div class="col-xs-12">
+        <app-training-entry-informations
+          [training]="training"></app-training-entry-informations>
+      </div>
+    </div>
+    <hr>
+    <!--<div style="text-align: center">-->
+      <!--<fa name="cog" animation="spin" [ngClass]="{ 'hidden': !loading }"></fa>-->
+      <!--<div *ngIf="info">-->
+        <!--<p [ngStyle]="{'color':info.type === infoType.Error ? 'red' : 'green' }">-->
+          <!--{{info.message}}-->
+        <!--</p>-->
+      <!--</div>-->
+    <!--</div>-->
+    <div class="row">
+      <div class="col-xs-12">
+        <app-training-entry-form
+          (onFormSubmit)="onFormSubmit($event)"></app-training-entry-form>
+      </div>
+    </div>
+  </div>
+</div>

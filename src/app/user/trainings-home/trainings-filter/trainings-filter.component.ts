@@ -1,7 +1,8 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ResourcesService} from "../../../shared/services/resources.service";
-import {TrainingParameters} from "../../../shared/models/trainining-parameters.model";
+import {TrainingParameters} from "../../../shared/models/domain-training/trainining-parameters.model";
 import {SelectItem} from '../../../shared/models/select-item.model';
+import {Voivodeship} from "../../../shared/models/voivodeship.model";
 
 @Component({
   selector: 'app-trainings-filter',
@@ -35,11 +36,25 @@ export class TrainingsFilterComponent implements OnInit {
     )
   }
 
+  onVoivodeshipsSelectionChange(selectedVoivodeships) {
+    this.filterOptions.selectedLocalizations = selectedVoivodeships;
+    this.onFilterChange();
+  }
+
+  onCategoriesSelectionChange(selectedCategories) {
+    this.filterOptions.selectedCategories = selectedCategories;
+    this.onFilterChange();
+  }
+
   onFilterChange() {
     this.onFilterChanged.emit(this.filterOptions);
   }
 
-  public mapCategoriesToSelectItem() {
-    return this.categories.map(c => ({value: c.name, label: c.name}));
+  public mapVoivodeshipsToSelectItem() {
+    return this.voivodeships.map(v => (new SelectItem(v.id, v.voivodeshipName)));
+  }
+
+  mapCategoriesToSelectItem() {
+    return this.categories.map(c => (new SelectItem(c.name, c.name)));
   }
 }

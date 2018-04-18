@@ -1,26 +1,19 @@
-<div class="form-group">
+<div style="text-align: center">
   <h4>Filtry:</h4>
-  <mat-form-field>
-    <mat-select
-      panelClass="test"
-      [(ngModel)]="filterOptions.selectedCategories"
-      placeholder="Kategorie"
-      multiple
-      (selectionChange)="onFilterChange()">
-      <mat-option *ngFor="let category of categories" [value]="category.name">{{category.name}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <hr>
-
-  <mat-form-field>
-    <mat-select
-      [(ngModel)]="filterOptions.selectedLocalizations"
-      placeholder="Województwa"
-      multiple
-      (selectionChange)="onFilterChange()">
-      <mat-option *ngFor="let voivodeship of voivodeships" [value]="voivodeship.id">{{voivodeship.voivodeshipName}}</mat-option>
-    </mat-select>
-  </mat-form-field>
-
 </div>
+<label for="filter-voivodeships">Województwa: </label>
+<div style="text-align: center">
+  <app-multi-select-ui-input
+    id="filter-voivodeships"
+    [items]="mapVoivodeshipsToSelectItem()"
+    (selectionChange)="onVoivodeshipsSelectionChange($event)"></app-multi-select-ui-input>
+</div>
+<hr>
+<label for="filter-voivodeships">Kategorie: </label>
+<div style="text-align: center">
+  <app-multi-select-ui-input
+    id="filter-categories"
+    [items]="mapCategoriesToSelectItem()"
+    (selectionChange)="onCategoriesSelectionChange($event)"></app-multi-select-ui-input>
+</div>
+

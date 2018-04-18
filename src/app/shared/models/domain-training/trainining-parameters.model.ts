@@ -1,6 +1,6 @@
-import {MarketStatus} from "./market-status.model";
-import {Category} from "./category.model";
-import {Voivodeship} from "./voivodeship.model";
+import {MarketStatus} from "../market-status.model";
+import {Category} from "../category.model";
+import {Voivodeship} from "../voivodeship.model";
 
 export class TrainingParameters {
   public constructor(

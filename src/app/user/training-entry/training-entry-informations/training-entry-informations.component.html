@@ -1,0 +1,83 @@
+<div class="row">
+  <div class="col-md-12">
+    <p>Informacje</p>
+    <table>
+      <tr>
+        <td>Tytuł</td>
+        <td>{{training.title}}</td>
+      </tr>
+      <tr>
+        <td>Kategoria</td>
+        <td>{{training.category.name}}</td>
+      </tr>
+      <tr>
+        <td>Tagi</td>
+        <td>
+          <p *ngFor="let tag of training.tags">
+            {{tag.name}}
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>Data utworzenia ogłoszenia</td>
+        <td> {{training.insertDate | date:'yyyy-MM-dd'}}</td>
+      </tr>
+      <tr>
+        <td>Dla kogo</td>
+        <td>
+          <ul>
+            <li *ngFor="let marketStatus of training.marketStatuses"> {{marketStatus.status}}</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>Miejsca odbywania</td>
+        <td>
+          Województwo:
+          <ul>
+            <li style="display: inline">
+              {{training.voivodeship.voivodeshipName}}
+            </li>
+          </ul>
+          Powiaty:
+          <ul>
+            <li
+              *ngFor="let county of training.counties"
+              style="display: inline"> {{county.countyName}},</li>
+          </ul>
+      </tr>
+      <tr>
+        <td>Opis</td>
+        <td>{{training.description}}</td>
+      </tr>
+      <tr>
+        <td>Załączniki</td>
+        <td>
+          <p>formularz1.pdf - <a>pobierz</a>
+          </p>
+          <p>harmonogram.pdf - <a>pobierz</a>
+          </p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    Kontakt
+    <table>
+      <tr>
+        <td>Kto</td>
+        <td>{{training.instructor.name}} {{training.instructor.surname}}</td>
+      </tr>
+      <tr>
+        <td>Numer telefonu</td>
+        <td>{{training.instructor.phoneNumber}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{training.instructor.email}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

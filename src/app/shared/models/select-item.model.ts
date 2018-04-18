@@ -1,5 +1,5 @@
 export class SelectItem {
   constructor(
-    public value: number,
-    public label: string) {}
+    public id: any,
+    public itemName: any) {}
 }

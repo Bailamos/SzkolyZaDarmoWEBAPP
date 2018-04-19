@@ -8,8 +8,8 @@ import {UserModule} from './user/user.module';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import {EntryAddedOverlayComponent} from "./shared/overlays/entry-added-overlay/entry-added-overlay.component";
 import {AuthModule} from "./auth/auth.module";
+import {InstructorManagmentModule} from "./instructor-managment/instructor-managment.module";
 
 
 @NgModule({
@@ -22,7 +22,8 @@ import {AuthModule} from "./auth/auth.module";
     HttpClientModule,
     CoreModule,
     UserModule,
-    AuthModule
+    AuthModule,
+    InstructorManagmentModule
   ],
   providers: [],
   bootstrap: [

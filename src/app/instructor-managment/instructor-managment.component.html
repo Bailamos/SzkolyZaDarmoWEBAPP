@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <button
+        class="btn btn-primary"
+        style="width: 100%"
+        [disabled]="!instructor.isActivated"
+        [routerLink]="['szkolenia','dodaj']">Dodaj szkolenie</button>
+    </div>
+    <div class="col-sm-6">
+      <button
+        class="btn btn-primary"
+        style="width: 100%"
+        [disabled]="!instructor.isActivated"
+        [routerLink]="['szkolenia','zarzadzaj']">Zarządzaj swoimi szkoleniami</button>
+    </div>
+    <div class="col-sm-12">
+      <p
+        *ngIf="!instructor.isActivated"
+        style="color:red;">Twoje konto jest nieaktywne. Skontaktuj się z administratorem</p>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>

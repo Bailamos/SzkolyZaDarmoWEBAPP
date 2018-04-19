@@ -60,7 +60,7 @@ export class TrainingEntryComponent implements OnInit, OnDestroy {
     saveUserResource.name = values.name;
     saveUserResource.surname = values.surname;
     saveUserResource.phoneNumber = values.phoneNumber;
-    saveUserResource.birthDay = values.birthDay.formatted;
+    saveUserResource.birthYear = values.birthYear;
     saveUserResource.marketStatusId = values.marketStatus;
     saveUserResource.entry = {
       trainingId: this.training.id

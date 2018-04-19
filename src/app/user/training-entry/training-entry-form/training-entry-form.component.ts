@@ -55,7 +55,7 @@ export class TrainingEntryFormComponent extends FormComponent implements OnInit 
             'email': new FormControl(null, [Validators.required, Validators.email]),
             'name': new FormControl(null, [Validators.required, Validators.pattern("^[a-zA-Z\\s]*$")]),
             'surname': new FormControl(null, [Validators.required, Validators.pattern("^[a-zA-Z\\s]*$")]),
-            'birthDay': new FormControl(null, Validators.required),
+            'birthYear': new FormControl(null, Validators.required),
             'marketStatus': new FormControl(this.marketStatuses[0].id, Validators.required),
             'education': new FormControl(this.educations[0].id, Validators.required),
             'areaOfResidence': new FormControl(this.areasOfResidence[0].id, Validators.required),

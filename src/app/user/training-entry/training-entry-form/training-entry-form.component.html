@@ -23,11 +23,14 @@
           name="sex"
           label="Płeć: "></app-select-input>
 
-
-        <app-date-input
+        <app-number-input
           [group]="form"
-          name="birthDay"
-          label="Data urodzin: "></app-date-input>
+          name="birthYear"
+          label="Rok urodzin: "></app-number-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('birthYear')"
+          errorMsg="Podaj rok urodzenia!">
+        </app-basic-error-view>
 
         <div
           [ngClass]="displayFieldCss('email')"

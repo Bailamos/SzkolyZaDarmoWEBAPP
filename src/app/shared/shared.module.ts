@@ -20,6 +20,7 @@ import {MyDatePickerModule} from "mydatepicker";
 import { TextAreaInputComponent } from './components/form-reactive/text-area-input/text-area-input.component';
 import {OverlayModule} from "@angular/cdk/overlay";
 import { EntryAddedOverlayComponent } from './overlays/entry-added-overlay/entry-added-overlay.component';
+import { NumberInputComponent } from './components/form-reactive/number-input/number-input.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { EntryAddedOverlayComponent } from './overlays/entry-added-overlay/entry
     SelectInputComponent,
     DateInputComponent,
     TextAreaInputComponent,
-    EntryAddedOverlayComponent
+    EntryAddedOverlayComponent,
+    NumberInputComponent
   ],
   exports: [
     NgxPaginationModule,
@@ -57,6 +59,7 @@ import { EntryAddedOverlayComponent } from './overlays/entry-added-overlay/entry
     SelectInputComponent,
     DateInputComponent,
     TextAreaInputComponent,
+    NumberInputComponent,
     EntryAddedOverlayComponent
   ],
   entryComponents: [

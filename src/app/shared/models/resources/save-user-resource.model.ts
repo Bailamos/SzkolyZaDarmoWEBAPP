@@ -3,7 +3,7 @@ export class SaveUserResource {
   public name: string;
   public surname: string;
   public email: string;
-  public birthDay: Date;
+  public birthYear: number;
   public marketStatusId: number;
   public areaOfResidenceId: number;
   public educationId: number;

@@ -4,6 +4,7 @@ import {ActivatedRoute} from "@angular/router";
 import {Training} from "../../shared/models/training.model";
 import {SaveUserResource} from "../../shared/models/resources/save-user-resource.model";
 import {UsersService} from "../../shared/services/users.service";
+import {EntryAddedOverlayService} from "../../shared/services/entry-added-overlay.service";
 
 @Component({
   selector: 'app-training-entry',
@@ -12,12 +13,12 @@ import {UsersService} from "../../shared/services/users.service";
 })
 export class TrainingEntryComponent implements OnInit, OnDestroy {
   public paramSubscription;
-
   public training: Training;
 
   constructor(
     private trainingsService: TrainingsService,
     private usersService: UsersService,
+    private overlayService: EntryAddedOverlayService,
     private route: ActivatedRoute) { }
 
   ngOnInit() {
@@ -41,17 +42,14 @@ export class TrainingEntryComponent implements OnInit, OnDestroy {
 
   onFormSubmit(values){
     var saveUserResource = this.mapFormToSaveUserResource(values);
-
     this.usersService.registerUser(saveUserResource).subscribe(
       (response) => {
-        console.log("sukces")
-        // this.loading = false;
-        // this.info = new Info(
-        //   InfoType.Ok,
-        //   "Poprawnie zapisano na szkolenie! Sprawdz maila");
+        this.overlayService.open(null);
       },
       (error) => {
         console.log("błąd")
+      },
+      () => {
       }
     )
   }

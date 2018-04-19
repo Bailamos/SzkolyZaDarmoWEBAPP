@@ -13,12 +13,13 @@ import {QueryResult} from "../../shared/models/query-result.model";
 export class TrainingsHomeComponent implements OnInit {
 
   public PAGE_SIZE = 5;
-
   public queryParams: any = {};
   public paginationOptions: any = {};
   public trainingsSortingCriteria: SortCriteria[] = TrainingSortCriteria.criteria;
 
   public trainings: Training[] = [];
+
+  public loading: boolean = false;
 
   constructor(private trainingsService: TrainingsService) { }
 
@@ -32,6 +33,7 @@ export class TrainingsHomeComponent implements OnInit {
   }
 
   public populateTrainings() {
+    this.loading = true;
     this.queryParams.page = this.paginationOptions.page;
     this.queryParams.pageSize = this.paginationOptions.pageSize;
 
@@ -39,7 +41,10 @@ export class TrainingsHomeComponent implements OnInit {
       .subscribe((response: QueryResult<Training>) => {
         this.trainings = response.items;
         this.paginationOptions.totalItems = response.itemsCount;
-      })
+      },
+        () => {},
+        () => {this.loading = false})
+
   }
 
   public onSortingChanged(sortingOptions) {

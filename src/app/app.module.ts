@@ -8,6 +8,7 @@ import {UserModule} from './user/user.module';
 
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
+import {EntryAddedOverlayComponent} from "./shared/overlays/entry-added-overlay/entry-added-overlay.component";
 
 
 @NgModule({
@@ -22,6 +23,8 @@ import {HttpClientModule} from "@angular/common/http";
     UserModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent
+  ]
 })
 export class AppModule { }

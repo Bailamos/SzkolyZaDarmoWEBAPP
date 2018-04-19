@@ -22,6 +22,7 @@
           [trainings]="trainings"
           [paginationOption]="paginationOptions"></app-trainings-home-list>
         <div style="text-align: center;">
+          <fa name="cog" animation="spin" [ngClass]="{ 'hidden': !loading }"></fa>
           <pagination-controls
             (pageChange)="getPage($event)"
             id="pagination"

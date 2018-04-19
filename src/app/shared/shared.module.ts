@@ -18,6 +18,8 @@ import { SelectInputComponent } from './components/form-reactive/select-input/se
 import { DateInputComponent } from './components/form-reactive/date-input/date-input.component';
 import {MyDatePickerModule} from "mydatepicker";
 import { TextAreaInputComponent } from './components/form-reactive/text-area-input/text-area-input.component';
+import {OverlayModule} from "@angular/cdk/overlay";
+import { EntryAddedOverlayComponent } from './overlays/entry-added-overlay/entry-added-overlay.component';
 
 
 @NgModule({
@@ -30,7 +32,8 @@ import { TextAreaInputComponent } from './components/form-reactive/text-area-inp
     AngularMultiSelectModule,
     AngularFontAwesomeModule,
     MyDatePickerModule,
-    MatSelectModule
+    MatSelectModule,
+    OverlayModule
   ],
   declarations: [
     MultiSelectInputUIComponent,
@@ -39,19 +42,25 @@ import { TextAreaInputComponent } from './components/form-reactive/text-area-inp
     TextInputComponent,
     SelectInputComponent,
     DateInputComponent,
-    TextAreaInputComponent
+    TextAreaInputComponent,
+    EntryAddedOverlayComponent
   ],
   exports: [
     NgxPaginationModule,
     RouterModule,
     AngularFontAwesomeModule,
+    OverlayModule,
     MultiSelectInputUIComponent,
     SelectInputUIComponent,
     BasicErrorViewComponent,
     TextInputComponent,
     SelectInputComponent,
     DateInputComponent,
-    TextAreaInputComponent
+    TextAreaInputComponent,
+    EntryAddedOverlayComponent
+  ],
+  entryComponents: [
+    EntryAddedOverlayComponent
   ]
 })
 export class SharedModule { }

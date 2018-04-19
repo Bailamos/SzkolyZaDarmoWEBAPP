@@ -34,6 +34,6 @@ import { TrainingEntryInformationsComponent } from './training-entry/training-en
     TrainingEntryComponent,
     TrainingEntryFormComponent,
     TrainingEntryInformationsComponent,
-  ]
+  ],
 })
 export class UserModule { }

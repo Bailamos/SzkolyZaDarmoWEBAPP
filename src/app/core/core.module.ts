@@ -6,6 +6,8 @@ import { HeaderComponent } from './header/header.component';
 import {SharedModule} from '../shared/shared.module';
 import {ResourcesService} from "../shared/services/resources.service";
 import {UsersService} from "../shared/services/users.service";
+import {EntryAddedOverlayService} from '../shared/services/entry-added-overlay.service';
+import {EntryAddedOverlayComponent} from "../shared/overlays/entry-added-overlay/entry-added-overlay.component";
 
 @NgModule({
   imports: [
@@ -21,7 +23,8 @@ import {UsersService} from "../shared/services/users.service";
   providers: [
     TrainingsService,
     UsersService,
-    ResourcesService
+    ResourcesService,
+    EntryAddedOverlayService
   ]
 })
 export class CoreModule { }

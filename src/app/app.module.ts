@@ -9,6 +9,7 @@ import {UserModule} from './user/user.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {EntryAddedOverlayComponent} from "./shared/overlays/entry-added-overlay/entry-added-overlay.component";
+import {AuthModule} from "./auth/auth.module";
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import {EntryAddedOverlayComponent} from "./shared/overlays/entry-added-overlay/
     AppRoutingModule,
     HttpClientModule,
     CoreModule,
-    UserModule
+    UserModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [

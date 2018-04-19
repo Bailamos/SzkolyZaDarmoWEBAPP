@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div style="color: red;" *ngIf="error">
+        <p>
+          Nie udało się utworzyć użytkownika, konto z danym mailem już istnieje.
+        </p>
+      </div>
+      <h2>Rejestracja:</h2>
+      <form [formGroup]="form"
+            (ngSubmit)="onSubmit()">
+        <app-text-input
+          [group]="form"
+          label="Email:"
+          name="email"></app-text-input>
+        <app-text-input
+          [group]="form"
+          label="Haslo: "
+          name="password"></app-text-input>
+        <app-text-input
+          [group]="form"
+          label="Numer telefonu: "
+          name="phoneNumber"></app-text-input>
+        <app-text-input
+          [group]="form"
+          label="Imie: "
+          name="name"></app-text-input>
+        <app-text-input
+          [group]="form"
+          label="Nazwisko: "
+          name="surname"></app-text-input>
+        <button
+          [disabled]="!form.valid"
+          class="btn btn-primary"
+          type="submit">Rejestracja</button>
+      </form>
+    </div>
+  </div>
+</div>
+

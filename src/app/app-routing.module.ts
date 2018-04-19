@@ -4,10 +4,12 @@ import {RouterModule, Routes} from '@angular/router';
 
 import {TrainingsHomeComponent} from "./user/trainings-home/trainings-home.component";
 import {TrainingEntryComponent} from "./user/training-entry/training-entry.component";
+import {AuthComponent} from "./auth/auth.component";
 
 const appRoutes: Routes  = [
   {path: '', component: TrainingsHomeComponent},
   {path: 'szkolenie/:id', component: TrainingEntryComponent},
+  {path: 'logowanie', component: AuthComponent},
 ];
 
 

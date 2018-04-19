@@ -52,6 +52,8 @@ import { NumberInputComponent } from './components/form-reactive/number-input/nu
     RouterModule,
     AngularFontAwesomeModule,
     OverlayModule,
+    ReactiveFormsModule,
+    FormsModule,
     MultiSelectInputUIComponent,
     SelectInputUIComponent,
     BasicErrorViewComponent,

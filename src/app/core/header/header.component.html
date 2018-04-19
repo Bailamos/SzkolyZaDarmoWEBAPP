@@ -10,7 +10,7 @@
              data-toggle="dropdown"
              class="dropdown-toggle"
              role="button"
-             [routerLink]="['auth']">Zaloguj
+             [routerLink]="['logowanie']">Zaloguj
             <span class="caret"></span>
           </a>
         </li>
@@ -32,16 +32,16 @@
                 style="cursor: pointer;"
                 [routerLink]="['panel', getInstructorId()]">Szkolenia</a></li>
               <hr style="margin: 0">
-              <!--<li><a-->
-                <!--*ngIf="instructor.isAdmin"-->
-                <!--style="cursor: pointer;"-->
-                <!--[routerLink]="['admin', getInstructorId()]">Panel admina</a></li>-->
-            <!--</ul>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</nav>-->
+              <li><a
+                *ngIf="instructor.isAdmin"
+                style="cursor: pointer;"
+                [routerLink]="['admin', getInstructorId()]">Panel admina</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
 
 

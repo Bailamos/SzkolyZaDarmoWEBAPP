@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import {InstructorManagmentModule} from "./instructor-managment/instructor-managment.module";
+import {AdminModule} from "./admin/admin.module";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {InstructorManagmentModule} from "./instructor-managment/instructor-manag
     CoreModule,
     UserModule,
     AuthModule,
-    InstructorManagmentModule
+    InstructorManagmentModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [

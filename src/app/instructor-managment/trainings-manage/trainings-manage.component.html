@@ -1,3 +1,37 @@
-<p>
-  trainings-manage works!
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="col-sm-2">
+      </div>
+      <div class="col-sm-10">
+        <div class="row">
+          <app-trainings-sort
+            [sortingCriteria]="sortingCriteria"
+            (onSortingChanged)="onSortingChanged($event)"></app-trainings-sort>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2">
+        <app-trainings-filter
+          (onFilterChanged)="onFilterChanged($event)"></app-trainings-filter>
+      </div>
+
+
+      <div class="col-sm-10">
+        <app-trainings-management-list
+          [trainings]="trainings"
+          [paginationOption]="paginationOptions"></app-trainings-management-list>
+        <div style="text-align: center;">
+          <fa name="cog" animation="spin" [ngClass]="{ 'hidden': !loading }"></fa>
+          <pagination-controls
+            (pageChange)="getPage($event)"
+            id="pagination"
+            previousLabel="Poprzednia"
+            nextLabel="Nastepna">
+          </pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

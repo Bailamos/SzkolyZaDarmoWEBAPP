@@ -3,7 +3,7 @@
     <label for="sorting">Sortowanie:</label>
     <app-select-ui-input
       id="sorting"
-      [items]="mapSortingCriteriaToSelectItem()"
+      [items]="sortSelectItems"
       (selectionChange)="onSelectionChange($event)"></app-select-ui-input>
   </div>
 </div>

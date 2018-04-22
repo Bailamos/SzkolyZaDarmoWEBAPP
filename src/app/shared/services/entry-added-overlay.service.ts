@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Overlay, OverlayConfig} from "@angular/cdk/overlay";
-import {ComponentPortal} from "@angular/cdk/portal";
+import {ComponentPortal, ComponentType} from "@angular/cdk/portal";
 import {EntryAddedOverlayComponent} from "../overlays/entry-added-overlay/entry-added-overlay.component";
 import {Router} from "@angular/router";
 
@@ -23,19 +23,22 @@ export class EntryAddedOverlayService {
     private overlay: Overlay,
     private router: Router) { }
 
-  public open(config: EntryAddedOverlayConfig) {
+  public open(
+    config: EntryAddedOverlayConfig,
+    component: ComponentType<any> = EntryAddedOverlayComponent,
+    commands = ['/']) {
     const dialogConfig = { ...DEFAULT_CONFIG, ...config };
     const overlayRef = this.createOverlay(dialogConfig);
-    const filePreviewPortal = new ComponentPortal(EntryAddedOverlayComponent);
+    const filePreviewPortal = new ComponentPortal(component);
 
     const timoutRef = setTimeout(() => {
-      overlayRef.dispose();
-      this.router.navigate(['/']);
+      overlayRef.dispose()
+      this.router.navigate(commands);
     }, 3000);
     overlayRef.backdropClick().subscribe(_ => {
       overlayRef.dispose();
       clearTimeout(timoutRef);
-      this.router.navigate(['/']);
+      this.router.navigate(commands);
     });
 
     overlayRef.attach(filePreviewPortal);

@@ -1,0 +1,14 @@
+<a
+  (click)="onItemClicked()"
+  class="list-group-item clearfix">
+
+  <div class="pull-left" >
+    <p
+      *ngFor="let value of item.values"
+      [ngStyle]="value.style"
+      class="list-group-item-text">
+      {{value.label}} : {{value.value}}
+    </p>
+  </div>
+</a>
+

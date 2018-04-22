@@ -5,7 +5,7 @@
 <div style="text-align: center">
   <app-multi-select-ui-input
     id="filter-voivodeships"
-    [items]="mapVoivodeshipsToSelectItem()"
+    [items]="voivodeshipsSelectItems"
     (selectionChange)="onVoivodeshipsSelectionChange($event)"></app-multi-select-ui-input>
 </div>
 <hr>
@@ -13,7 +13,7 @@
 <div style="text-align: center">
   <app-multi-select-ui-input
     id="filter-categories"
-    [items]="mapCategoriesToSelectItem()"
+    [items]="categoriesSelectItems"
     (selectionChange)="onCategoriesSelectionChange($event)"></app-multi-select-ui-input>
 </div>
 

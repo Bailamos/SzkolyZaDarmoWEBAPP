@@ -21,6 +21,15 @@ import { TextAreaInputComponent } from './components/form-reactive/text-area-inp
 import {OverlayModule} from "@angular/cdk/overlay";
 import { EntryAddedOverlayComponent } from './overlays/entry-added-overlay/entry-added-overlay.component';
 import { NumberInputComponent } from './components/form-reactive/number-input/number-input.component';
+import {MultiselectDropdownModule} from "angular-2-dropdown-multiselect";
+import { MultiSelectComponent } from './components/form-reactive/multi-select/multi-select.component';
+import {TagInputModule} from "ng2-tag-input/dist/modules";
+import {RlTagInputModule} from "angular2-tag-input/dist";
+import {TrainingsSortComponent} from "./components/utils/trainings-sort/trainings-sort.component";
+import {TrainingsFilterComponent} from "./components/utils/trainings-filter/trainings-filter.component";
+import { TrainingAddedOverlayComponent } from './overlays/training-added-overlay/training-added-overlay.component';
+import { SimpleListComponent } from './components/utils/simple-list/simple-list.component';
+import { SimpleListItemComponent } from './components/utils/simple-list/simple-list-item/simple-list-item.component';
 
 
 @NgModule({
@@ -34,7 +43,8 @@ import { NumberInputComponent } from './components/form-reactive/number-input/nu
     AngularFontAwesomeModule,
     MyDatePickerModule,
     MatSelectModule,
-    OverlayModule
+    MultiselectDropdownModule,
+    OverlayModule,
   ],
   declarations: [
     MultiSelectInputUIComponent,
@@ -45,7 +55,13 @@ import { NumberInputComponent } from './components/form-reactive/number-input/nu
     DateInputComponent,
     TextAreaInputComponent,
     EntryAddedOverlayComponent,
-    NumberInputComponent
+    NumberInputComponent,
+    MultiSelectComponent,
+    TrainingsSortComponent,
+    TrainingsFilterComponent,
+    TrainingAddedOverlayComponent,
+    SimpleListComponent,
+    SimpleListItemComponent
   ],
   exports: [
     NgxPaginationModule,
@@ -54,6 +70,8 @@ import { NumberInputComponent } from './components/form-reactive/number-input/nu
     OverlayModule,
     ReactiveFormsModule,
     FormsModule,
+    AngularMultiSelectModule,
+    RlTagInputModule,
     MultiSelectInputUIComponent,
     SelectInputUIComponent,
     BasicErrorViewComponent,
@@ -62,10 +80,18 @@ import { NumberInputComponent } from './components/form-reactive/number-input/nu
     DateInputComponent,
     TextAreaInputComponent,
     NumberInputComponent,
-    EntryAddedOverlayComponent
+    EntryAddedOverlayComponent,
+    MultiselectDropdownModule,
+    MultiSelectComponent,
+    TrainingsSortComponent,
+    TrainingsFilterComponent,
+    TrainingAddedOverlayComponent,
+    SimpleListComponent,
+    SimpleListItemComponent
   ],
   entryComponents: [
-    EntryAddedOverlayComponent
+    EntryAddedOverlayComponent,
+    TrainingAddedOverlayComponent
   ]
 })
 export class SharedModule { }

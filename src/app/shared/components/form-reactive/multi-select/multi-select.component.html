@@ -1,0 +1,9 @@
+<div class="form-group" [formGroup]="group">
+  <label for="{{name}}">{{label}}</label>
+  <angular2-multiselect
+    id="{{name}}"
+    [data]="items"
+    [settings]="dropdownSettings"
+    formControlName="{{name}}">
+  </angular2-multiselect>
+</div>

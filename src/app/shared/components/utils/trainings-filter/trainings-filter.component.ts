@@ -1,8 +1,7 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
-import {ResourcesService} from "../../../shared/services/resources.service";
-import {TrainingParameters} from "../../../shared/models/domain-training/trainining-parameters.model";
-import {SelectItem} from '../../../shared/models/select-item.model';
-import {Voivodeship} from "../../../shared/models/voivodeship.model";
+import {Component, EventEmitter, OnChanges, OnInit, Output} from '@angular/core';
+import {ResourcesService} from "../../../services/resources.service";
+import {TrainingParameters} from "../../../models/domain-training/trainining-parameters.model";
+import {SelectItem} from '../../../models/select-item.model';;
 
 @Component({
   selector: 'app-trainings-filter',
@@ -20,6 +19,9 @@ export class TrainingsFilterComponent implements OnInit {
     selectedCategories: []
   }
 
+  voivodeshipsSelectItems = [];
+  categoriesSelectItems = [];
+
 
   constructor(
     private resourcesService: ResourcesService) { }
@@ -29,6 +31,9 @@ export class TrainingsFilterComponent implements OnInit {
       (res: TrainingParameters) => {
         this.voivodeships = res.voivodeships;
         this.categories = res.categories;
+
+        this.voivodeshipsSelectItems = this.mapVoivodeshipsToSelectItem();
+        this.categoriesSelectItems = this.mapCategoriesToSelectItem();
       },
     (err) => {
         console.log("Nie udało się pobrać parametrów filtrowania")
@@ -50,11 +55,11 @@ export class TrainingsFilterComponent implements OnInit {
     this.onFilterChanged.emit(this.filterOptions);
   }
 
-  public mapVoivodeshipsToSelectItem() {
+  private mapVoivodeshipsToSelectItem() {
     return this.voivodeships.map(v => (new SelectItem(v.id, v.voivodeshipName)));
   }
 
-  mapCategoriesToSelectItem() {
+  private mapCategoriesToSelectItem() {
     return this.categories.map(c => (new SelectItem(c.name, c.name)));
   }
 }

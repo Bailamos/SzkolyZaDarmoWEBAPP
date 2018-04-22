@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <button
+        class="btn btn-primary"
+        style="width: 100%"
+        [routerLink]="['instruktorzy']">Przegladaj instruktorow</button>
+    </div>
+    <div class="col-sm-6">
+      <button
+        class="btn btn-primary"
+        style="width: 100%"
+        [routerLink]="['crm']">CRM</button>
+    </div>
+  </div>
+  <div class="row">
+    <router-outlet></router-outlet>
+  </div>
+</div>

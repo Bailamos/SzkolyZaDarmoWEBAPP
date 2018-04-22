@@ -1,3 +1,118 @@
-<p>
-  training-add-form works!
-</p>
+<div class="container">
+  <div class="row">
+
+    <div class="col-xs-12">
+      <form *ngIf="!loading" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <input type="hidden" name="instructorId">
+
+        <app-text-input
+          [name]="'contactPhoneNumber'"
+          [group]="form"
+          [label]="'Kontaktowy numer telefonu: '"></app-text-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('contactPhoneNumber')"
+          errorMsg="Podaj prawidłowy numer telefonu!">
+        </app-basic-error-view>
+
+        <app-text-input
+          [name]="'contactEmail'"
+          [group]="form"
+          [label]="'Kontaktowy email: '"></app-text-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('contactEmail')"
+          errorMsg="Podaj prawidłowy mail!">
+        </app-basic-error-view>
+
+        <app-text-input
+          [group]="form"
+          name="title"
+          label="Tytuł"></app-text-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('title')"
+          errorMsg="Tytuł wymagany"></app-basic-error-view>
+
+        <app-text-area-input
+          [group]="form"
+          name="description"
+          label="Opis"></app-text-area-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('description')"
+          errorMsg="Opis wymagany"></app-basic-error-view>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="voivodeship">Wojewodztwo</label>
+            <select
+              (change)="onVoivodeshipChange($event.target.value)"
+              formControlName="voivodeship"
+              class="form-control"
+              id="voivodeship">
+              <option *ngFor="let voivodeship of voivodeships" value="{{voivodeship.id}}"> {{voivodeship.voivodeshipName}}</option>
+            </select>
+          </div>
+          <div class="col-md-6">
+            <app-multi-select
+              [group]="form"
+              name="county"
+              [items]="countiesSelectItems"
+              label="powiaty"></app-multi-select>
+          </div>
+        </div>
+
+        <label for="category">Kategoria</label>
+        <select
+          formControlName="category"
+          class="form-control"
+          id="category">
+          <option *ngFor="let category of categories" value="{{category.name}}"> {{category.name}}</option>
+        </select>
+
+
+        <div class="form-group">
+          <label for="tags">Tagi</label>
+          <rl-tag-input
+            id="tags"
+            placeholder="Dodaj tagi"
+            formControlName="tags"></rl-tag-input>
+        </div>
+
+        <app-multi-select
+          [group]="form"
+          name="marketStatuses"
+          [items]="marketStatusesSelectItems"
+          label="Wymagane statusy"></app-multi-select>
+
+        <div
+          class="form-group"
+          formGroupName="registrationPeriod">
+          <app-date-input
+            [group]="form.controls.registrationPeriod"
+            name="registerSince"
+            label="Termin rekrutacji od"></app-date-input>
+          <app-date-input
+            [group]="form.controls.registrationPeriod"
+            name="registerTo"
+            label="Termin rekrutacji do"></app-date-input>
+          <app-basic-error-view
+            [displayError]="isFieldValid('registrationPeriod') && form.controls.registrationPeriod.errors != null"
+            errorMsg="Data rozpoczecia nie moze byc pozniejsza od daty zakonczenia rekrutacji">
+          </app-basic-error-view>
+        </div>
+
+        <div *ngIf="editMode; else createMode">
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!form.valid">Edytuj</button>
+        </div>
+        <ng-template #createMode>
+          <button
+            class="btn btn-primary"
+            type="submit"
+            [disabled]="!form.valid">Dodaj szkolenie</button>
+        </ng-template>
+      </form>
+      <fa name="cog" animation="spin" [ngClass]="{ 'hidden': !loading }"></fa>
+    </div>
+  </div>
+</div>

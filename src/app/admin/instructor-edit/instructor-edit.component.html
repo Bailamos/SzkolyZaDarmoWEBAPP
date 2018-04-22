@@ -1,0 +1,62 @@
+<div *ngIf="instructor">
+  <hr>
+  <div class="row">
+    <table align="center">
+      <tr>
+        <td>Id</td>
+        <td>{{instructor.id}}</td>
+      </tr>
+      <tr>
+        <td>Imie</td>
+        <td>{{instructor.name}}</td>
+      </tr>
+      <tr>
+        <td>Nazwisko</td>
+        <td>{{instructor.surname}}</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>{{instructor.email}}</td>
+      </tr>
+      <tr>
+        <td>Aktywny</td>
+        <td>{{instructor.isActivated}}</td>
+      </tr>
+    </table>
+    <button
+      *ngIf="!instructor.isActivated"
+      (click)="chanageInstructorStatus()"
+      class="btn btn-primary">Aktywuj</button>
+    <button
+      *ngIf="instructor.isActivated"
+      (click)="chanageInstructorStatus()"
+      class="btn btn-danger">Dezaktywuj</button>
+    <button
+      (click)="onDeleteInstructorClicked()"
+      class="btn btn-danger">Usun instruktora</button>
+  </div>
+  <hr>
+  <div class="row">
+    <h2>Szkolenia:</h2>
+    <a
+      *ngFor="let training of instructor.trainings"
+      class="list-group-item clearfix">
+
+      <div class="pull-left">
+        <h4 class="list-group-item-heading"> {{training.title}} </h4>
+        <p class="list-group-item-text">
+          Kategoria: {{training.category.name}}
+        </p>
+        <p class="list-group-item-text">
+          Termin realizacji: od {{training.registerSince | date:'yyyy-MM-dd'}} do {{training.registerTo | date:'yyyy-MM-dd'}}
+        </p>
+        <p class="list-group-item-text">
+          Data dodania: {{training.insertDate | date:'yyyy-MM-dd'}}
+        </p>
+        <p class="list-group-item-text">
+          Dla osob o statusie zawodowym: {{training.marketStatus.status}}
+        </p>
+      </div>
+    </a>
+  </div>
+</div>

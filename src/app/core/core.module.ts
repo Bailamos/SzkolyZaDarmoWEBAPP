@@ -10,6 +10,7 @@ import {EntryAddedOverlayService} from '../shared/services/entry-added-overlay.s
 import {EntryAddedOverlayComponent} from "../shared/overlays/entry-added-overlay/entry-added-overlay.component";
 import {AuthService} from "../shared/services/auth.service";
 import {InstructorsService} from "../shared/services/instructors.service";
+import {EmailService} from "../shared/services/email.service";
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {InstructorsService} from "../shared/services/instructors.service";
     ResourcesService,
     EntryAddedOverlayService,
     AuthService,
-    InstructorsService
+    InstructorsService,
+    EmailService
   ]
 })
 export class CoreModule { }

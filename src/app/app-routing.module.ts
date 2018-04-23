@@ -12,6 +12,11 @@ import {TrainingEditComponent} from "./instructor-managment/trainings-manage/tra
 import {AdminComponent} from "./admin/admin.component";
 import {InstructorsOverviewComponent} from "./admin/instructors-overview/instructors-overview.component";
 import {InstructorEditComponent} from "./admin/instructor-edit/instructor-edit.component";
+import {CrmComponent} from "./crm/crm.component";
+import {UserDetailsComponent} from "./crm/user-details/user-details.component";
+import {EmailComponent} from "./crm/email/email.component";
+import {UserAddReminderFormComponent} from "./crm/user-add-reminder-form/user-add-reminder-form.component";
+import {UserEditComponent} from "./crm/user-edit/user-edit.component";
 
 const appRoutes: Routes  = [
   {path: '', component: TrainingsHomeComponent},
@@ -25,11 +30,12 @@ const appRoutes: Routes  = [
   {path: 'admin/:admin_id', component: AdminComponent, children: [
     {path: 'instruktorzy', component: InstructorsOverviewComponent},
     {path: 'instruktorzy/:instr_id/edytuj', component: InstructorEditComponent},
-    // {path: 'crm', component: CrmComponent, children: [
-    //   {path: ':user_id/details', component: UserDetailsComponent},
-    //   {path: ':user_id/email', component: EmailComponent},
-    //   {path: 'email', component: EmailComponent}
-    // ]}
+    {path: 'crm', component: CrmComponent, children: [
+      {path: 'email', component: EmailComponent},
+      {path: ':user_id/dodaj-komentarz', component: UserAddReminderFormComponent},
+      {path: ':user_id/szczegoly', component: UserDetailsComponent},
+      {path: ':user_id/edytuj', component: UserEditComponent}
+    ]}
   ]},
 ];
 

@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Dodaj komentarz</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-text-area-input
+        [group]="form"
+        name="description"
+        label="Opis:"></app-text-area-input>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!form.valid">Dodaj przypomnienie</button>
+    </form>
+  </div>
+</div>

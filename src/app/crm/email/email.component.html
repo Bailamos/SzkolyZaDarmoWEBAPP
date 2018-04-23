@@ -1,0 +1,23 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <fa name="cog" animation="spin" [ngClass]="{ 'hidden': !sending }"></fa>
+  <div style="color:green" *ngIf="sended">
+    Wiadomość wysłana!
+  </div>
+
+  <label for="odbiorca">Odbiorca:</label>
+  <input
+    id="odbiorca"
+    formControlName="receiver"
+    type="text"
+    class="form-control">
+
+  <app-text-area-input
+    [group]="form"
+    name="message"
+    label="wiadomosc">
+
+  </app-text-area-input>
+
+  <button type="submit" class="btn btn-prmiary">Wyslij wiadomosc</button>
+</form>

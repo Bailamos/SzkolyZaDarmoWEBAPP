@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import {Service} from "./service";
 import {Training} from "../models/training.model";
 import {Subject} from "rxjs/Subject";
+import {Category} from "../models/category.model";
 
 @Injectable()
 export class TrainingsService extends Service{
@@ -27,6 +28,10 @@ export class TrainingsService extends Service{
 
   public updateTraining(id, training) {
     return this.http.put(this.API_URL + '/trainings/' + id , training);
+  }
+
+  getCategories() {
+    return this.http.get<Category[]>(this.API_URL + '/trainings/categories');
   }
 
 }

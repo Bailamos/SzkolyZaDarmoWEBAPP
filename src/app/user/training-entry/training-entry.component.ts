@@ -14,6 +14,7 @@ import {EntryAddedOverlayService} from "../../shared/services/entry-added-overla
 export class TrainingEntryComponent implements OnInit, OnDestroy {
   public paramSubscription;
   public training: Training;
+  public loading = false;
 
   constructor(
     private trainingsService: TrainingsService,
@@ -42,6 +43,7 @@ export class TrainingEntryComponent implements OnInit, OnDestroy {
 
   onFormSubmit(values){
     var saveUserResource = this.mapFormToSaveUserResource(values);
+    this.loading = true;
     this.usersService.registerUser(saveUserResource).subscribe(
       (response) => {
         this.overlayService.open(null);
@@ -50,6 +52,7 @@ export class TrainingEntryComponent implements OnInit, OnDestroy {
         console.log("błąd")
       },
       () => {
+        this.loading = false;
       }
     )
   }

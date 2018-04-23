@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-12">
+    <h3>Edytuj uzytkownika</h3>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <app-text-input
+        [group]="form"
+        name="phoneNumber"
+        label="Numer telefonu:"></app-text-input>
+
+      <button
+        class="btn btn-primary"
+        type="submit"
+        [disabled]="!form.valid">Dodaj przypomnienie</button>
+    </form>
+  </div>
+</div>

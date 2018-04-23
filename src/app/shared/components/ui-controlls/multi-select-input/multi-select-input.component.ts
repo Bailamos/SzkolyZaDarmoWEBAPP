@@ -16,6 +16,8 @@ export class MultiSelectInputUIComponent implements OnInit {
 
   public dropdownSettings = {};
 
+
+
   ngOnInit(){
     this.dropdownSettings = {
       singleSelection: false,

@@ -1,0 +1,33 @@
+<label for="filter-voivodeships">Miejsce zamieszkania: </label>
+<app-multi-select-ui-input
+  id="filter-voivodeships"
+  [items]="voivodeshipsSelectItems"
+  (selectionChange)="onVoivodeshipsSelectionChange($event)"></app-multi-select-ui-input>
+
+<label for="filter-categories">Zainteresowania: </label>
+<app-multi-select-ui-input
+  id="filter-categories"
+  [items]="categoriesSelectItems"
+  (selectionChange)="onCategoriesSelectionChange($event)"></app-multi-select-ui-input>
+
+<label for="filter-marketStatuses">Status: </label>
+<app-multi-select-ui-input
+  id="filter-marketStatuses"
+  [items]="marketStatusesSelectItems"
+  (selectionChange)="onStatusesSelectionChange($event)"></app-multi-select-ui-input>
+
+<label for="filter-age-from">Wiek od</label>
+<input
+  [(ngModel)]="selectedFilters.ageFrom"
+  (change)="onAgeFromChange($event)"
+  id="filter-age-from"
+  class="form-control"
+  type="number">
+
+<label for="filter-age-to">Wiek do</label>
+<input
+  [(ngModel)]="selectedFilters.ageTo"
+  (change)="onAgeToChange($event)"
+  id="filter-age-to"
+  class="form-control"
+  type="number">

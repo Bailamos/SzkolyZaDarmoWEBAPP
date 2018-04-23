@@ -1,0 +1,108 @@
+<div class="container" *ngIf="user">
+  <div class="row">
+    <div class="row">
+      <table>
+        <tr>
+          <td>Imie i nazwisko</td>
+          <td>{{user.name}} {{user.surname}}</td>
+        </tr>
+        <tr>
+          <td>Numer telefonu</td>
+          <td>{{user.phoneNumber}}</td>
+        </tr>
+        <tr>
+          <td>Miejsce amieszkania</td>
+          <td>{{user.voivodeship.voivodeshipName}} - {{user.county.countyName}}</td>
+        </tr>
+        <tr>
+          <td>Email</td>
+          <td>{{user.email}}</td>
+        </tr>
+        <tr>
+          <td>Rok Urodzenia</td>
+          <td>{{user.birthYear}}</td>
+        </tr>
+        <tr>
+          <td>Status</td>
+          <td>{{user.marketStatus.status}}</td>
+        </tr>
+        <tr>
+          <td>Wyksztalcenie</td>
+          <td>{{user.education.educationType}}</td>
+        </tr>
+        <tr>
+          <td>Plec</td>
+          <td>{{user.sex.name}}</td>
+        </tr>
+      </table>
+      <p>
+        <a (click)="onSendEmailClick()">
+          <span class="glyphicon glyphicon-envelope"></span>
+        </a>
+        Wyslij wiadomosc
+      </p>
+      <p>
+        <a (click)="onEditClick()">
+          <span class="    glyphicon glyphicon-edit"></span>
+        </a>
+        Edytuj
+      </p>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Komentarze</h3>
+        <span
+          (click)="onAddCommentClick()"
+          class="glyphicon glyphicon-plus"></span>
+        <app-simple-list
+          [items]="mapCommentsToListItem()"
+        ></app-simple-list>
+      </div>
+      <div class="col-md-6">
+        <h3>Szkolenia na które się zapisał</h3>
+        <div *ngIf="user.entries.length > 0; else noEntries">
+          <app-simple-list
+            [items]="mapUserEntriesToListItem()"></app-simple-list>
+        </div>
+        <ng-template #noEntries>
+          <p>Użytkownik nie zapisał się na żadne szkolenie</p>
+        </ng-template>
+      </div>
+    </div>
+    <div class="row">
+      <h3>Historia</h3>
+      <ul>
+        <li *ngFor="let log of logs">
+          {{log.date | date:'yyyy-MM-dd hh:mm'}} - {{log.description}}
+        </li>
+      </ul>
+    </div>
+
+
+    <!--<button class="btn btn-prmiary" (click)="onSendMessage()">Wyślij wiadomość</button>-->
+    <!--<div *ngIf="user.entries">-->
+      <!--<a *ngFor="let entry of user.entries" class="list-group-item clearfix">-->
+        <!--<div class="pull-left">-->
+          <!--<h3>Data zapisania: {{entry.insertDate | date:'yyyy-MM-dd hh:mm'}} </h3>-->
+          <!--<h4 class="list-group-item-heading"> {{entry.training.title}} </h4>-->
+          <!--<p class="list-group-item-text">-->
+            <!--Kategoria: {{entry.training.category.name}}-->
+          <!--</p>-->
+          <!--<p class="list-group-item-text">-->
+            <!--Lokalizacja: {{entry.training.localization.voivodeship}}-->
+          <!--</p>-->
+          <!--<p class="list-group-item-text">-->
+            <!--Termin realizacji: od {{entry.training.registerSince | date:'yyyy-MM-dd'}} do {{entry.training.registerTo | date:'yyyy-MM-dd'}}-->
+          <!--</p>-->
+          <!--<p class="list-group-item-text">-->
+            <!--Dla osob o statusie zawodowym: {{entry.training.marketStatus.status}}-->
+          <!--</p>-->
+        <!--</div>-->
+      <!--</a>-->
+    <!--</div>-->
+  </div>
+</div>
+
+
+

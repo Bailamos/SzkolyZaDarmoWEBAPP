@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12">
+    <app-users-list-item
+      *ngFor="let user of users |
+       paginate: {
+           id: 'pagination',
+           itemsPerPage: paginationOption.pageSize,
+           currentPage: paginationOption.page,
+           totalItems: paginationOption.totalItems
+         }"
+      [user]="user">
+    </app-users-list-item>
+  </div>
+</div>
+

@@ -11,6 +11,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {AuthModule} from "./auth/auth.module";
 import {InstructorManagmentModule} from "./instructor-managment/instructor-managment.module";
 import {AdminModule} from "./admin/admin.module";
+import {CrmModule} from "./crm/crm.module";
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {AdminModule} from "./admin/admin.module";
     UserModule,
     AuthModule,
     InstructorManagmentModule,
-    AdminModule
+    AdminModule,
+    CrmModule
   ],
   providers: [],
   bootstrap: [

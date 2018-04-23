@@ -4,28 +4,31 @@ import {Service} from "./service";
 @Injectable()
 export class UsersService extends Service{
 
-  registerUser(userBody) {
+  public registerUser(userBody) {
     return this.http.post(this.API_URL + '/users', userBody);
   }
 
-  // getUsers(queryParams) {
-  //   return this.http.get(this.API_URL + '/users' + "?" + this.toQueryString(queryParams));
-  // }
-  //
-  // getOne(phoneNumber: string) {
-  //   return this.http.get(this.API_URL + '/users/' + phoneNumber);
-  // }
-  //
-  // createLog(phoneNumber: string, log) {
-  //   return this.http.post(this.API_URL + '/users/' + phoneNumber + "/logs", log);
-  // }
-  //
-  // getLogs(phoneNumber: string) {
-  //   return this.http.get(this.API_URL + '/users/' + phoneNumber + "/logs");
-  // }
-  //
-  // getEmails(queryParams) {
-  //   return this.http.get(this.API_URL + '/users/emails' + "?" + this.toQueryString(queryParams));
-  // }
+  public getUsers(queryParams) {
+    return this.http.get(this.API_URL + '/users' + "?" + this.toQueryString(queryParams));
+  }
 
+  public getEmails(queryParams) {
+    return this.http.get(this.API_URL + '/users/emails' + "?" + this.toQueryString(queryParams));
+  }
+
+  public getOne(phoneNumber: string) {
+    return this.http.get(this.API_URL + '/users/' + phoneNumber);
+  }
+
+  public getComments(phoneNumber: string) {
+    return this.http.get(this.API_URL + '/users/' + phoneNumber + '/comments');
+  }
+
+  public addComment(saveCommentResource) {
+    return this.http.post(this.API_URL + '/users/' + saveCommentResource.userPhoneNumber + '/comments',saveCommentResource);
+  }
+
+  public getLogs(phoneNumber: string) {
+    return this.http.get(this.API_URL + '/users/' + phoneNumber + "/logs");
+  }
 }

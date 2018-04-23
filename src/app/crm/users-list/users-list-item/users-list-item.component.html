@@ -1,0 +1,20 @@
+<a class="list-group-item clearfix">
+
+  <div class="pull-left">
+
+    <p class="list-group-item-text">
+      Imie i nazwisko: {{user.name}} {{user.surname}}
+    </p>
+    <p class="list-group-item-text">
+      Numer telefonu: {{user.phoneNumber}}
+    </p>
+    <p class="list-group-item-text">
+      Ostatnia aktualizacja: {{user.lastUpdate | date: 'yyyy-MM-dd hh:mm' }}
+    </p>
+    <p class="list-group-item-text">
+      <a [routerLink]="[user.phoneNumber, 'szczegoly']">Szczegoly</a>
+    </p>
+  </div>
+</a>
+
+

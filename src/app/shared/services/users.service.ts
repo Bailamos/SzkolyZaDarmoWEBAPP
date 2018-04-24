@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import {Service} from "./service";
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class UsersService extends Service{
+
+  public usersChanged = new Subject<any>();
 
   public registerUser(userBody) {
     return this.http.post(this.API_URL + '/users', userBody);
@@ -30,5 +33,13 @@ export class UsersService extends Service{
 
   public getLogs(phoneNumber: string) {
     return this.http.get(this.API_URL + '/users/' + phoneNumber + "/logs");
+  }
+
+  public editUser(userBody) {
+    return this.http.put(this.API_URL + '/users/' + userBody.phoneNumber, userBody);
+  }
+
+  public changeEntryParticipate(userPhoneNumber: string, trainingId: number) {
+    return this.http.patch(this.API_URL + '/users/' + userPhoneNumber + "/" + trainingId + "/participate", null);
   }
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {IMultiSelectOption, IMultiSelectSettings, IMultiSelectTexts} from "angular-2-dropdown-multiselect";
 import {SelectItem} from '../../../models/select-item.model';
 
 

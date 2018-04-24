@@ -3,6 +3,7 @@ import {Category} from "./category.model";
 import {MarketStatus} from "./market-status.model";
 import {Instructor} from "./instructor.model";
 import {Localization} from "./localization.model";
+import {Voivodeship} from "./domain-shared/voivodeship.model";
 
 
 export class Training {
@@ -18,6 +19,9 @@ export class Training {
     public category: Category,
     public marketStatus: MarketStatus,
     public instructor: Instructor,
+    public voivodeship: Voivodeship,
+    public contactPhoneNumber: string,
+    public contactEmail: string,
     public counties: {id: number, countyName: string}[],
     public marketStatuses: MarketStatus[],
 

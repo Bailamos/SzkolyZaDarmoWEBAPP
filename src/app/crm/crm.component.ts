@@ -1,4 +1,4 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {UsersService} from "../shared/services/users.service";
 import {TrainingsService} from "../shared/services/trainings.service";
 import {Router} from '@angular/router';
@@ -15,13 +15,17 @@ import { DOCUMENT } from '@angular/platform-browser';
   templateUrl: './crm.component.html',
   styleUrls: ['./crm.component.css']
 })
-export class CrmComponent implements OnInit {
+export class CrmComponent implements OnInit, OnDestroy {
+
+
   public PAGE_SIZE = 5;
   public paginationOptions: any = {};
   public queryParams: any = {};
   public sortingCriteria: SortCriteria[] = UserSortCriteria.criteria;
 
   public users = [];
+  public loading = false;
+  public subscription;
 
   constructor(
     @Inject(DOCUMENT) private document,
@@ -38,6 +42,16 @@ export class CrmComponent implements OnInit {
     this.paginationOptions.pageSize = this.PAGE_SIZE;
 
     this.populateUsers();
+
+    this.subscription = this.usersService.usersChanged.subscribe(
+      () => {
+        this.populateUsers();
+      }
+    )
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public onSortingChanged(sortingOptions) {
@@ -89,6 +103,6 @@ export class CrmComponent implements OnInit {
   }
 
   onCsv() {
-    this.document.location.href = 'http://localhost:5000/api/users/csv';
+    this.document.location.href = 'http://185.38.248.105/api/users/csv';
   }
 }

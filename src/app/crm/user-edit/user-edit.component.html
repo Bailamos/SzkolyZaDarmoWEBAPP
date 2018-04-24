@@ -1,16 +1,169 @@
 <div class="row">
   <div class="col-xs-12">
-    <h3>Edytuj uzytkownika</h3>
-    <form [formGroup]="form" (ngSubmit)="onSubmit()">
-      <app-text-input
-        [group]="form"
-        name="phoneNumber"
-        label="Numer telefonu:"></app-text-input>
+    <fa name="cog" animation="spin" [ngClass]="{ 'hidden': !loading }"></fa>
+    <div *ngIf="!loading">
+      <h3>Zgłoszenia</h3>
 
-      <button
-        class="btn btn-primary"
-        type="submit"
-        [disabled]="!form.valid">Dodaj przypomnienie</button>
-    </form>
+      <div style="padding: 1%" *ngFor="let entryInfo of entriesInfo" class="row" >
+        <div class="col-md-10">
+          <table>
+            <tr *ngFor="let value of entryInfo.entry.values">
+              <td>{{value.label}}</td>
+              <td>{{value.value}}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-2">
+          <p *ngIf="!entryInfo.didParticipate; else didnt">
+            <span
+              (click)="onChangeMarticipateStatus(entryInfo.trainingId)"
+              class="glyphicon glyphicon-plus"></span>
+            Wziął udział
+          </p>
+          <ng-template #didnt>
+            <p>
+              <span
+                (click)="onChangeMarticipateStatus(entryInfo.trainingId)"
+                class="glyphicon glyphicon-minus"></span>
+              Nie wziął udziału
+            </p>
+          </ng-template>
+        </div>
+      </div>
+
+      <hr>
+      <h3>Edytuj uzytkownika</h3>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div
+          [ngClass]="displayFieldCss('phoneNumber')"
+          class="form-group">
+          <app-text-input
+            [name]="'phoneNumber'"
+            [group]="form"
+            [label]="'Numer telefonu: '"></app-text-input>
+          <app-basic-error-view
+            [displayError]="isFieldValid('phoneNumber')"
+            errorMsg="Podaj prawidłowy numer telefonu!">
+          </app-basic-error-view>
+        </div>
+
+        <app-select-input
+          [group]="form"
+          [items]="mapSexesToSelectItems()"
+          name="sex"
+          label="Płeć: "></app-select-input>
+
+        <app-number-input
+          [group]="form"
+          name="birthYear"
+          label="Rok urodzin: "></app-number-input>
+        <app-basic-error-view
+          [displayError]="isFieldValid('birthYear')"
+          errorMsg="Podaj rok urodzenia!">
+        </app-basic-error-view>
+
+        <div
+          [ngClass]="displayFieldCss('email')"
+          class="form-group">
+          <app-text-input
+            [name]="'email'"
+            [group]="form"
+            [label]="'Email: '"></app-text-input>
+          <app-basic-error-view
+            [displayError]="isFieldValid('email')"
+            errorMsg="Podaj prawidłowy mail!">
+          </app-basic-error-view>
+        </div>
+
+        <div
+          [ngClass]="displayFieldCss('name')"
+          class="form-group">
+          <app-text-input
+            [name]="'name'"
+            [group]="form"
+            [label]="'Imie: '"></app-text-input>
+          <app-basic-error-view
+            [displayError]="isFieldValid('name')"
+            errorMsg="Podaj prawidłowe imie!">
+          </app-basic-error-view>
+        </div>
+
+        <div
+          [ngClass]="displayFieldCss('surname')"
+          class="form-group">
+          <app-text-input
+            [name]="'surname'"
+            [group]="form"
+            [label]="'Nazwisko: '"></app-text-input>
+          <app-basic-error-view
+            [displayError]="isFieldValid('surname')"
+            errorMsg="Podaj prawidłowe nazwisko!">
+          </app-basic-error-view>
+        </div>
+
+        <div class="form-group">
+          <app-select-input
+            [group]="form"
+            [items]="mapMarketStatusesToSelectItem()"
+            name="marketStatus"
+            label="Status na rynku pracy: "></app-select-input>
+        </div>
+
+        <app-select-input
+          [group]="form"
+          [items]="mapEducationsToSelectItems()"
+          label="Wyksztalcenie: "
+          name="education"></app-select-input>
+
+        <app-select-input
+          [group]="form"
+          [items]="mapAreasOfResidenceToSelectItems()"
+          label="Region zamieszkania: "
+          name="areaOfResidence"></app-select-input>
+
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="voivodeship">Wojewodztwo:</label>
+            <select
+              (change)="onVoivodeshipChange($event.target.value)"
+              formControlName="voivodeship"
+              class="form-control"
+              id="voivodeship">
+              <option *ngFor="let voivodeship of voivodeships" value="{{voivodeship.id}}"> {{voivodeship.voivodeshipName}}</option>
+            </select>
+            <app-basic-error-view
+              [displayError]="isFieldValid('voivodeship')"
+              errorMsg="Wojewodztwo jest wymagane!">
+            </app-basic-error-view>
+          </div>
+          <div class="col-md-6">
+            <label for="county">Powiat:</label>
+            <select
+              formControlName="county"
+              class="form-control"
+              id="county">
+              <option *ngFor="let county of counties" value="{{county.id}}"> {{county.countyName}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-check" >
+          <label for="disability">Osoba z zaświadczeniem o niepełnosprawności:</label>
+          <input
+            class="form-check-input"
+            type="checkbox"
+            formControlName="disability"
+            id="disability">
+        </div>
+
+        <div *ngIf="success" style="color: green">
+          Poprawnie zaktualizowano
+        </div>
+        <button
+          class="btn btn-primary"
+          type="submit" [disabled]="!form.valid">Edytuj</button>
+      </form>
+    </div>
   </div>
 </div>

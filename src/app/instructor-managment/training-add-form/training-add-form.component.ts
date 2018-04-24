@@ -187,7 +187,7 @@ export class TrainingAddFormComponent extends FormComponent implements OnInit {
     saveTrainingResource.title = formValue.title;
     saveTrainingResource.categoryName = formValue.category;
     saveTrainingResource.description = formValue.description;
-    saveTrainingResource.tags = formValue.tags;
+    saveTrainingResource.tags = formValue.tags.map(t => t.value);
     saveTrainingResource.instructorId = this.authService.getInstructor().id;
     saveTrainingResource.registerSince = formValue.registrationPeriod.registerSince.formatted;
     saveTrainingResource.registerTo = formValue.registrationPeriod.registerTo.formatted;

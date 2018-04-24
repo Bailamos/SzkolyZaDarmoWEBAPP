@@ -14,9 +14,12 @@ export class User {
     public education: {Id: number, EducationType: string },
     public sex: {Id: number, Name: string },
     public voivodeship: Voivodeship,
+    public notes: [{description: string}],
     public entries: [{
       insertDate: Date,
+      didParticipated: boolean,
       training: {
+        id: number,
         title: string
         category: Category,
         marketStatus: MarketStatus

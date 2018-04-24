@@ -12,7 +12,7 @@
         </tr>
         <tr>
           <td>Miejsce amieszkania</td>
-          <td>{{user.voivodeship.voivodeshipName}} - {{user.county.countyName}}</td>
+          <td>{{user.voivodeship.voivodeshipName}} - {{user.county != null ? user.county.countyName : ''}}</td>
         </tr>
         <tr>
           <td>Email</td>
@@ -50,6 +50,16 @@
     </div>
     <hr>
     <div class="row">
+      <h3>Szkolenia na które się zapisał</h3>
+      <div *ngIf="user.entries.length > 0; else noEntries">
+        <app-simple-list
+          [items]="mapUserEntriesToListItem()"></app-simple-list>
+      </div>
+      <ng-template #noEntries>
+        <p>Użytkownik nie zapisał się na żadne szkolenie</p>
+      </ng-template>
+    </div>
+    <div class="row">
       <div class="col-md-6">
         <h3>Komentarze</h3>
         <span
@@ -60,47 +70,22 @@
         ></app-simple-list>
       </div>
       <div class="col-md-6">
-        <h3>Szkolenia na które się zapisał</h3>
-        <div *ngIf="user.entries.length > 0; else noEntries">
-          <app-simple-list
-            [items]="mapUserEntriesToListItem()"></app-simple-list>
-        </div>
-        <ng-template #noEntries>
-          <p>Użytkownik nie zapisał się na żadne szkolenie</p>
-        </ng-template>
+        <h3>Uwagi</h3>
+        <ul>
+          <li *ngFor="let note of user.notes">
+            {{note.description}}
+          </li>
+        </ul>
       </div>
     </div>
     <div class="row">
       <h3>Historia</h3>
       <ul>
         <li *ngFor="let log of logs">
-          {{log.date | date:'yyyy-MM-dd hh:mm'}} - {{log.description}}
+        {{log.date | date:'yyyy-MM-dd hh:mm'}} - {{log.description}}
         </li>
       </ul>
     </div>
-
-
-    <!--<button class="btn btn-prmiary" (click)="onSendMessage()">Wyślij wiadomość</button>-->
-    <!--<div *ngIf="user.entries">-->
-      <!--<a *ngFor="let entry of user.entries" class="list-group-item clearfix">-->
-        <!--<div class="pull-left">-->
-          <!--<h3>Data zapisania: {{entry.insertDate | date:'yyyy-MM-dd hh:mm'}} </h3>-->
-          <!--<h4 class="list-group-item-heading"> {{entry.training.title}} </h4>-->
-          <!--<p class="list-group-item-text">-->
-            <!--Kategoria: {{entry.training.category.name}}-->
-          <!--</p>-->
-          <!--<p class="list-group-item-text">-->
-            <!--Lokalizacja: {{entry.training.localization.voivodeship}}-->
-          <!--</p>-->
-          <!--<p class="list-group-item-text">-->
-            <!--Termin realizacji: od {{entry.training.registerSince | date:'yyyy-MM-dd'}} do {{entry.training.registerTo | date:'yyyy-MM-dd'}}-->
-          <!--</p>-->
-          <!--<p class="list-group-item-text">-->
-            <!--Dla osob o statusie zawodowym: {{entry.training.marketStatus.status}}-->
-          <!--</p>-->
-        <!--</div>-->
-      <!--</a>-->
-    <!--</div>-->
   </div>
 </div>
 

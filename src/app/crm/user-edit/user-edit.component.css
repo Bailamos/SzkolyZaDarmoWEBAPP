@@ -17,3 +17,8 @@ tr:nth-child(even) {
 span {
   cursor: pointer;
 }
+
+.disabledDiv {
+  pointer-events: none;
+  opacity: 0.4;
+}

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../shared/services/auth.service";
 import {FormComponent} from "../../shared/utils/FormComponent.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SaveInstructorResource} from "../../shared/models/resources/save-instructor-resource.model";
+import {SaveInstructorResource} from "../../shared/models/resources/save/save-instructor-resource.model";
 
 @Component({
   selector: 'app-auth-register',

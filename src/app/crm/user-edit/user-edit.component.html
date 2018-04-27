@@ -36,7 +36,7 @@
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div
           [ngClass]="displayFieldCss('phoneNumber')"
-          class="form-group">
+          class="form-group disabledDiv">
           <app-text-input
             [name]="'phoneNumber'"
             [group]="form"

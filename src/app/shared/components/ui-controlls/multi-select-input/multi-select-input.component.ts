@@ -23,6 +23,7 @@ export class MultiSelectInputUIComponent implements OnInit {
       singleSelection: false,
       enableCheckAll: true,
       text:"Wybierz",
+      badgeShowLimit: 3,
       selectAllText:'Zaznacz wszystkie',
       unSelectAllText:'Odznacz wszystkie'
     };

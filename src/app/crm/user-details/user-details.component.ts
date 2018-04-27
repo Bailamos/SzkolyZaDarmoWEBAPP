@@ -6,6 +6,8 @@ import {EmailService} from "../../shared/services/email.service";
 import {AuthService} from "../../shared/services/auth.service";
 import {UsersService} from "../../shared/services/users.service";
 import {ListItem} from "../../shared/models/list-item.model";
+import {UserLog} from "../../shared/models/domain-user/user-log.model";
+import {ResourcesService} from "../../shared/services/resources.service";
 
 @Component({
   selector: 'app-user-details',
@@ -15,8 +17,10 @@ import {ListItem} from "../../shared/models/list-item.model";
 export class UserDetailsComponent implements OnInit {
 
   public paramSubscription: Subscription;
-  public user: User;
 
+  public user: User;
+  public userPropertiesMap = UserLog.map;
+  public userParameters;
   public logs = [];
   public comments = [];
 
@@ -25,7 +29,8 @@ export class UserDetailsComponent implements OnInit {
     private router: Router,
     private emailService: EmailService,
     private authService: AuthService,
-    private usersService: UsersService) { }
+    private usersService: UsersService,
+    private resourceService: ResourcesService) { }
 
   ngOnInit() {
     this.paramSubscription = this.route.params.subscribe(
@@ -36,6 +41,7 @@ export class UserDetailsComponent implements OnInit {
             this.user = response;
           }
         );
+
         this.usersService.getComments(userId).subscribe(
           (response: any) => {
             this.comments = response;
@@ -44,14 +50,21 @@ export class UserDetailsComponent implements OnInit {
 
           }
         )
+
         this.usersService.getLogs(userId).subscribe(
-          (response: [{date: Date, description: string}]) => {
+          (response: UserLog[]) => {
             this.logs = response;
           },
           (err) => {
 
           }
-        )
+        );
+
+        this.resourceService.getUserParameters().then(
+          (data) => {
+            this.userParameters = data;
+          }
+        );
       });
   }
 

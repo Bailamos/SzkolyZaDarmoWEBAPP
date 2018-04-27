@@ -5,7 +5,7 @@ import {DateValidators} from "../../shared/validators/date.validators";
 import {ResourcesService} from "../../shared/services/resources.service";
 import {TrainingParameters} from "../../shared/models/domain-training/trainining-parameters.model";
 import {TrainingsService} from "../../shared/services/trainings.service";
-import {SaveTrainingResource} from "../../shared/models/resources/save-training-resource.model";
+import {SaveTrainingResource} from "../../shared/models/resources/save/save-training-resource.model";
 import {AuthService} from "../../shared/services/auth.service";
 
 import * as moment from "moment";

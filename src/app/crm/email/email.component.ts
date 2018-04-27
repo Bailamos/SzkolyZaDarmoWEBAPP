@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {EmailService} from "../../shared/services/email.service";
 import {FormComponent} from "../../shared/utils/FormComponent.model";
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {SendMessageResource} from "../../shared/models/resources/send-message-resource";
+import {SendMessageResource} from "../../shared/models/resources/save/send-message-resource";
 
 @Component({
   selector: 'app-email',

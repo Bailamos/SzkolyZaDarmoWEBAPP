@@ -17,3 +17,10 @@ tr:nth-child(even) {
 span {
   cursor: pointer;
 }
+
+.list-group{
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}

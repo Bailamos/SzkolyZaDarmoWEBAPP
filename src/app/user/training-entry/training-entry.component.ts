@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {TrainingsService} from "../../shared/services/trainings.service";
 import {ActivatedRoute} from "@angular/router";
 import {Training} from "../../shared/models/training.model";
-import {SaveUserResource} from "../../shared/models/resources/save-user-resource.model";
+import {SaveUserResource} from "../../shared/models/resources/save/save-user-resource.model";
 import {UsersService} from "../../shared/services/users.service";
 import {EntryAddedOverlayService} from "../../shared/services/entry-added-overlay.service";
 

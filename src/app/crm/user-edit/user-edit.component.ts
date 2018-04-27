@@ -12,8 +12,10 @@ import {Sex} from "../../shared/models/domain-user/sex.model";
 import {UsersService} from "../../shared/services/users.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {User} from "../../shared/models/user.model";
-import {SaveUserResource} from "../../shared/models/resources/save-user-resource.model";
+import {SaveUserResource} from "../../shared/models/resources/save/save-user-resource.model";
 import {ListItem} from "../../shared/models/list-item.model";
+import {EditUserResource} from "../../shared/models/resources/edit/edit-user-resource.model";
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
   selector: 'app-user-edit',
@@ -41,14 +43,18 @@ export class UserEditComponent extends FormComponent implements OnInit {
   public counties: any[] = [];
   public voivodeships: Voivodeship[] = [];
 
+  public instructorEmail;
+
   constructor(
     private resourcesService: ResourcesService,
     private usersService: UsersService,
+    private authService: AuthService,
     private route: ActivatedRoute) {
     super();
   }
 
   ngOnInit() {
+    this.instructorEmail = this.authService.getInstructor().email;
     this.loading = true;
     Observable.forkJoin([
       this.resourcesService.getUserParameters(),
@@ -118,9 +124,9 @@ export class UserEditComponent extends FormComponent implements OnInit {
 
   onSubmit(){
     this.success = false;
-    var saveUserResource = this.mapFormToSaveUserResource(this.form.value);
+    var editUserResource = this.mapFormToSaveUserResource(this.form.value);
     this.loading = true;
-    this.usersService.editUser(saveUserResource).subscribe(
+    this.usersService.editUser(editUserResource).subscribe(
       (response) => {
         this.success = true;
       },
@@ -186,21 +192,22 @@ export class UserEditComponent extends FormComponent implements OnInit {
     )
   }
 
-  mapFormToSaveUserResource(values): SaveUserResource {
-    var saveUserResource = new SaveUserResource();
-    saveUserResource.email = values.email;
-    saveUserResource.name = values.name;
-    saveUserResource.surname = values.surname;
-    saveUserResource.phoneNumber = values.phoneNumber;
-    saveUserResource.birthYear = values.birthYear;
-    saveUserResource.marketStatusId = values.marketStatus;
-    saveUserResource.educationId = values.education;
-    saveUserResource.voivodeshipId = values.voivodeship;
-    saveUserResource.countyId = values.county;
-    saveUserResource.areaOfResidenceId = values.areaOfResidence;
-    saveUserResource.sexId = values.sex;
-    saveUserResource.hasDisability = values.disability;
-    return saveUserResource;
+  mapFormToSaveUserResource(values): EditUserResource {
+    var editUserResource = new EditUserResource();
+    editUserResource.email = values.email;
+    editUserResource.name = values.name;
+    editUserResource.surname = values.surname;
+    editUserResource.phoneNumber = values.phoneNumber;
+    editUserResource.birthYear = values.birthYear;
+    editUserResource.marketStatusId = values.marketStatus;
+    editUserResource.educationId = values.education;
+    editUserResource.voivodeshipId = values.voivodeship;
+    editUserResource.countyId = values.county;
+    editUserResource.areaOfResidenceId = values.areaOfResidence;
+    editUserResource.sexId = values.sex;
+    editUserResource.hasDisability = values.disability;
+    editUserResource.byWho = this.instructorEmail;
+    return editUserResource;
   }
 
   public mapUserEntriesToListItem(): any {

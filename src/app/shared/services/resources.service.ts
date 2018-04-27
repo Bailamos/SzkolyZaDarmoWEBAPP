@@ -7,13 +7,31 @@ import {UserParameters} from "../models/domain-user/user-parameters.model";
 @Injectable()
 export class ResourcesService extends Service {
 
+  private userParameters: UserParameters = null;
+
   public getTrainingParameters() {
     return this.http.get<TrainingParameters>(this.API_URL + "/resources/trainings");
   }
 
   public getUserParameters() {
-    return this.http.get<UserParameters>(this.API_URL + "/resources/users");
-  }
+    return new Promise(
+      (resolve, reject) => {
+        if (this.userParameters != null) {
+          resolve(this.userParameters);
+        } else {
+          this.http.get<UserParameters>(this.API_URL + "/resources/users").subscribe(
+            (res) => {
+              this.userParameters = res;
+              resolve(this.userParameters);
+            },
+            (err) => {
+              reject(err);
+            }
+          )
+        }
+      }
+    )
+}
 
   public getVoivodeships() {
     return this.http.get(this.API_URL + "/resources/voivodeships");

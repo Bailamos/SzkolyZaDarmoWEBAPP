@@ -67,13 +67,12 @@
           <option *ngFor="let category of categories" value="{{category.name}}"> {{category.name}}</option>
         </select>
 
-
-        <div class="form-group">
-          <label for="tags">Tagi</label>
-          <tag-input
-            id="tags"
-            formControlName="tags"></tag-input>
-        </div>
+        <label for="tags">Tagi</label>
+        <tag-input
+          id="tags"
+          placeholder="Dodaj tagi"
+          secondaryPlaceholder="Dodaj tagi"
+          formControlName="tags"></tag-input>
 
         <app-multi-select
           [group]="form"

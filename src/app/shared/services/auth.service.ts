@@ -1,7 +1,7 @@
 import {Service} from "./service";
 import {Subject} from "rxjs/Subject";
 import {Instructor} from "../models/instructor.model";
-import {SaveInstructorResource} from "../models/resources/save-instructor-resource.model";
+import {SaveInstructorResource} from "../models/resources/save/save-instructor-resource.model";
 
 
 export class AuthService extends Service {
